@@ -2,7 +2,7 @@
 session_start();
 $config = require __DIR__ . DIRECTORY_SEPARATOR . 'config.php';
 $util = $config['util'];
-$args = ['query' => FILTER_SANITIZE_STRING];
+$args = ['query' => FILTER_UNSAFE_RAW];
 $post = filter_var_array($_POST, $args);
 $odbc = [];
 $result = null;
@@ -15,8 +15,8 @@ if ($odbc['connection_id']) {
         if ($odbc['result_id']) {
             $result = call_user_func_array($util['odbc_result_all'], [
                 $odbc['result_id'], 
-                'class="table table-striped table-bordered"']
-            );
+                'class="table table-striped table-bordered"'
+            ]);
         } else {
             $_SESSION['__flash']['error'] = odbc_errormsg($odbc['connection_id']);
         }
@@ -24,6 +24,7 @@ if ($odbc['connection_id']) {
 } else {
     $_SESSION['__flash']['error'] = _("Connection could not be established: ") . odbc_errormsg();
 }
+odbc_close($odbc['connection_id']);
 ?>
 <!doctype html>
 <html>
@@ -49,20 +50,24 @@ if ($odbc['connection_id']) {
                     <h3 class="panel-title"><?= _('Query Editor') ?></h3>
                   </div>
                   <div class="panel-body">
-                      <form class="form" method="POST">
+                      <form class="form" id="query_form" method="POST">
                           <div class="form-group">
                               <textarea name="query" class="form-control hide"><?= $post['query'] ?></textarea>
                               <pre id="editor"></pre>
                           </div>
-                          <button type="submit" class="btn btn-primary" id="execute-btn" title="Ctrl + Enter or F9"><?= _('Execute') ?></button>
+                          <button type="submit"
+                              class="btn btn-primary"
+                              id="execute-btn"
+                              title="<?= _('Ctrl + Enter or F9') ?>"><?= _('Execute') ?></button>
                       </form>
                   </div>
                 </div>
                 
                 <div class="result-container">
-                    <div class="query-result">
+                    <div class="query-result clearfix">
                         <?= $result ?>
                     </div>
+                    <p></p>
                 </div>
             </div>
         </div>
@@ -81,18 +86,19 @@ if ($odbc['connection_id']) {
         editor.getSession().on('change', function() {
             textarea.val(editor.getSession().getValue());
         });
+        editor.commands.addCommand({
+            name: "execute",
+            exec: function() {
+                $('#query_form').submit();
+            },
+            bindKey: {mac: "cmd-enter", win: "ctrl-enter"}
+        });
         
-        $('.table').floatThead({
+        $('#query-result .table').floatThead({
             scrollContainer: function($table){
                 return $table.closest('.query-result');
-            },
-            useAbsolutePositioning: true
-        });
-        $('#editor').keydown(function(evt) {
-            if ((evt.ctrlKey && evt.keyCode == 13) || evt.keyCode == 119) {
-                $('.form').submit();
             }
-        })
+        });
     })(jQuery);
     </script>
 </body>
