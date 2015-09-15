@@ -64,10 +64,9 @@ odbc_close($odbc['connection_id']);
                 </div>
                 
                 <div class="result-container">
-                    <div class="query-result clearfix">
+                    <div class="query-result">
                         <?= $result ?>
                     </div>
-                    <p></p>
                 </div>
             </div>
         </div>
