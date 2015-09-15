@@ -1,0 +1,15 @@
+#editor {
+    height: 300px;
+}
+.query-result {
+    height: 300px;
+    width: 100%;
+    overflow: auto;
+}
+table.floatThead-table thead tr th {
+    background-color: #FFFFFF;
+}
+.query-result table thead tr th,
+.query-result table tbody tr td {
+    white-space: nowrap;
+}

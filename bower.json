@@ -1,0 +1,12 @@
+{
+    "name": "Impala ODBC Connector",
+    "version": "0.1.1",
+    "description": "A basic query client for impala.",
+    "dependencies": {
+        "ace-builds": "~1.2.0",
+        "bootstrap": "~3.0.0",
+        "floatThead": "~1.2.13"
+    },
+    "main": "assets/css/main.css",
+    "private": true
+}

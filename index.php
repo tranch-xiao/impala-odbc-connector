@@ -31,8 +31,8 @@ odbc_close($odbc['connection_id']);
 <head>
     <meta charset="UTF-8">
     <title><?= _('Impala ODBC Connector') ?></title>
-    <link rel="stylesheet" href="assets/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/local/css/main.css">
+    <link rel="stylesheet" href="assets/components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
     
@@ -72,9 +72,9 @@ odbc_close($odbc['connection_id']);
         </div>
     </div>
     
-    <script src="assets/jquery/dist/jquery.js"></script>
-    <script src="assets/ace/build/src/ace.js"></script>
-    <script src="assets/jquery.floatThead/dist/jquery.floatThead.js"></script>
+    <script src="assets/components/jquery/dist/jquery.js"></script>
+    <script src="assets/components/ace-builds/src/ace.js"></script>
+    <script src="assets/components/jquery.floatThead/dist/jquery.floatThead.js"></script>
     <script>
     (function($) {
         var editor = ace.edit("editor"),
