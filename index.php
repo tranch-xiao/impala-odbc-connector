@@ -93,7 +93,7 @@ odbc_close($odbc['connection_id']);
             bindKey: {mac: "cmd-enter", win: "ctrl-enter"}
         });
         
-        $('#query-result .table').floatThead({
+        $('.query-result .table').floatThead({
             scrollContainer: function($table){
                 return $table.closest('.query-result');
             }
