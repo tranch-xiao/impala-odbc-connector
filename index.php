@@ -42,7 +42,7 @@ odbc_close($odbc['connection_id']);
                 <h1 class="page-header"><?= _('Impala ODBC Connector') ?></h1>
                 
                 <?php foreach ($_SESSION['__flash'] as $type => $message): ?>
-                    <div class="alert alert-<?= str_replace($type, 'danger', 'error') ?>" role="alert"><?= $message ?></div>
+                    <div class="alert alert-<?= str_replace('error', 'danger', $type) ?>" role="alert"><?= $message ?></div>
                 <?php endforeach ?>
                 
                 <div class="panel panel-default">
