@@ -1,8 +1,8 @@
 #editor {
-    height: 300px;
+    height: 250px;
 }
 .query-result {
-    height: 300px;
+    max-height: 450px;
     width: 100%;
     overflow: auto;
 }
