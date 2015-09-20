@@ -1,6 +1,6 @@
 <?php
 return call_user_func(function () use ($post) {
-    $db = new PDO(sprintf('sqlite:%s.sqlite', basename(__FILE__)));
+    $db = new PDO(sprintf('sqlite:%s.sqlite', implode(DIRECTORY_SEPARATOR, [__DIR__, basename(__FILE__, '.php')])));
     $query_create_talbe = 'CREATE TABLE IF NOT EXISTS query_history (id integer primary key autoincrement, query text, created_at datetime)';
     $query_add = 'INSERT INTO query_history (query, created_at) VALUES (?, ?)';
     $query_get_last = 'SELECT query FROM query_history ORDER BY created_at DESC LIMIT 10';
