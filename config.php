@@ -39,5 +39,8 @@ return [
             return $table;
         }
     ],
-    'language' => 'zh_CN'
+    'language' => 'zh_CN',
+    'plugins' => [
+        'QueryHistory'
+    ]
 ];
