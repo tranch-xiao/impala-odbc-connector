@@ -82,8 +82,8 @@ odbc_close($odbc['connection_id']);
                             <div class="panel-body">
                                 <ol id="query_statements" reversed="reversed" >
                                     <?php foreach ($result_plugins['QueryHistory'] as $row): ?>
-                                        <li data-statement="<?= $row['query'] ?>">
-                                            <a href="#editor" title="<?= str_replace(["\r", "\n"], ' ', $row['query']) ?>">
+                                        <li data-statement='<?= htmlentities($row['query']) ?>'>
+                                            <a href="#editor" title='<?= htmlentities($row['query']) ?>'>
                                                 <code><?= substr(str_replace(["\r", "\n"], ' ', $row['query']), 0, 35) ?></code>
                                             </a>
                                         </li>
