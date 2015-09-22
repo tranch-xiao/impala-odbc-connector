@@ -109,7 +109,7 @@ odbc_close($odbc['connection_id']);
     
     <script src="assets/components/jquery/dist/jquery.js"></script>
     <script src="assets/components/ace-builds/src/ace.js"></script>
-    <script src="assets/components/jquery.floatThead/dist/jquery.floatThead.js"></script>
+    <script src="assets/components/floatThead/dist/jquery.floatThead.js"></script>
     <script>
     (function($) {
         var editor = ace.edit("editor"),
