@@ -20,7 +20,7 @@ $odbc['connection_id'] = @odbc_connect($config['db']['dsn'], $config['db']['user
 if ($odbc['connection_id']) {
     if ($post['query']) {
         $odbc['result_id'] = @odbc_exec($odbc['connection_id'], $post['query']);
-        if ($odbc['result_id']) {
+        if ($odbc['result_id']) {   
             $result = call_user_func_array($util['odbc_result_all'], [
                 $odbc['result_id'], 
                 'class="table table-striped table-bordered"'
@@ -82,8 +82,8 @@ odbc_close($odbc['connection_id']);
                             <div class="panel-body">
                                 <ol id="query_statements" reversed="reversed" >
                                     <?php foreach ($result_plugins['QueryHistory'] as $row): ?>
-                                        <li data-statement='<?= htmlentities($row['query']) ?>'>
-                                            <a href="#editor" title='<?= htmlentities($row['query']) ?>'>
+                                        <li data-statement="<?= htmlentities($row['query']) ?>">
+                                            <a href="#editor" title="<?= htmlentities($row['query']) ?>">
                                                 <code><?= substr(str_replace(["\r", "\n"], ' ', $row['query']), 0, 35) ?></code>
                                             </a>
                                         </li>
